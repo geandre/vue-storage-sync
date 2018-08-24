@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "Vue": true
+  },
+  "rules": {
+    "func-names": "off",
+    "no-param-reassign": "off",
+    "implicit-arrow-linebreak": "error",
+    "max-len": "off"
+  }
+}

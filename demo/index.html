@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>VueStorageSync</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="./vue-storage-sync.min.js"></script>
+</head>
+
+<body>
+  <div id="app" :style="{background: color}">
+
+    Name: <input type="text" v-model="name">
+    <br><br> Email: <input type="text" v-model="email">
+    <br><br> Background: <select v-model="color">
+      <option value="white">White</option>
+      <option value="blue">Blue</option>
+      <option value="red">Red</option>
+      <option value="orange">Orange</option>
+      <option value="green">Green</option>
+    </select>
+
+  </div>
+  <script>
+    // Plugin defaults
+    Vue.use(VueStorageSync);
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        email: '',
+        color: 'white',
+      },
+      storage: {
+        local: {
+          key: 'app-root-local',
+          duration: 0,
+          entries: ["name", "email"]
+        },
+        session: {
+          key: 'app-root-session',
+          duration: 600, // five minutes
+          entries: ["color"]
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

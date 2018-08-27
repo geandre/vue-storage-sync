@@ -1,10 +1,11 @@
 {
   "name": "vue-storage-sync",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A plugin to sync vue data to a storage system",
   "main": "index.js",
   "scripts": {
-    "build": "bili --name vue-storage-sync --format cjs-min,umd-min --module-name VueStorageSync"
+    "build": "bili --format cjs-min,umd-min",
+    "build:docs": "bili --format umd-min --out-dir docs"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,8 @@
     "session",
     "local",
     "browser",
-    "client"
+    "client",
+    "keep-alive"
   ],
   "author": "Geandre Miranda <geandremiranda.ms@gmail.com> (https://geandre.github.io)",
   "license": "ISC",
@@ -33,5 +35,10 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "vue": "^2.5.17"
+  },
+  "bili": {
+    "name": "vue-storage-sync",
+    "moduleName": "VueStorageSync",
+    "banner": true
   }
 }

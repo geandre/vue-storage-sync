@@ -1,6 +1,6 @@
 {
   "name": "vue-storage-sync",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A plugin to sync vue data to a storage system",
   "main": "index.js",
   "scripts": {

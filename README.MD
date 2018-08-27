@@ -18,6 +18,8 @@ registration options.
 When called by a component the plugin will automatically store the specified properties to a
 selected storage system and mantain it updated. With this your component will behave as a keep-alive.
 
+Live demo: [geandre.github.io/vue-storage-sync/](https://geandre.github.io/vue-storage-sync/)
+
 ## Installing
 
 ```bach

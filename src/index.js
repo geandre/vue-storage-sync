@@ -97,12 +97,16 @@ const isExpired = (time) => {
  * @return Object|null
  */
 const getData = function (options) {
+  // Update options
+  options = getOptions(options)[0]; // eslint-disable-line prefer-destructuring
+
   const store = storageSystems[options.storage];
-  const storedObject = JSON.parse(store.get(options.key));
+  const key = options.suffix ? `${options.key}/${options.suffix}` : options.key;
+  const storedObject = JSON.parse(store.get(key));
 
   if (!storedObject) return {};
   if (isExpired(storedObject.expires)) {
-    store.remove(options.key);
+    store.remove(key);
     return {};
   }
   return storedObject.data;
@@ -114,19 +118,23 @@ const getData = function (options) {
  * @return Object|null
  */
 const setData = function (prop, value, options) {
+  // Update options
+  options = getOptions(options)[0]; // eslint-disable-line prefer-destructuring
+
   const store = storageSystems[options.storage];
   const data = getData(options);
   data[prop] = value;
   const expires = options.duration > 0 ? options.duration + new Date().getTime() / 1000 : 0;
   const newData = { data, expires };
-  return store.set(options.key, JSON.stringify(newData));
+  const key = options.suffix ? `${options.key}/${options.suffix}` : options.key;
+  return store.set(key, JSON.stringify(newData));
 };
 
 /**
  * @func storageSync
  * @desc main sync function
  */
-const storageSync = function (options) {
+const storageSync = function (options = {}) {
   // Get current options
   options = getOptions(options);
   // Each storage
@@ -137,19 +145,22 @@ const storageSync = function (options) {
         this[item] = storedData[item];
       });
     }
-    // Register watchers
-    option.entries.forEach((prop) => {
-      this.$watch(
-        prop,
-        // eslint-disable-next-line prefer-arrow-callback
-        function (value) {
-          setData(prop, value, option);
-        },
-        {
-          deep: true,
-        },
-      );
-    });
+
+    if (option.entries != null) {
+      // Register watchers
+      option.entries.forEach((prop) => {
+        this.$watch(
+          prop,
+          // eslint-disable-next-line prefer-arrow-callback
+          function (value) {
+            setData(prop, value, option);
+          },
+          {
+            deep: true,
+          },
+        );
+      });
+    }
   });
 };
 
@@ -162,10 +173,10 @@ const onBeforeCreate = function () {
 };
 
 /**
- * @func onMounted
+ * @func onCreated
  * @desc Mixin function for beforeCreate hook
  */
-const onMounted = function () {
+const onCreated = function () {
   const { storage } = this.$options;
   if (storage) this.$storageSync(storage);
 };
@@ -183,7 +194,7 @@ const install = function (Vue, userDefaultOptions = {}) {
   // Set the mixin
   Vue.mixin({
     beforeCreate: onBeforeCreate,
-    mounted: onMounted,
+    created: onCreated,
   });
 };
 

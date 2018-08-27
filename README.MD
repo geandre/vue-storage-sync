@@ -2,7 +2,7 @@
 
 > A plugin to sync vue data to a storage system
 
-<img src="https://badgen.net/badge/NPM/1.1.1/blue"/>&nbsp;
+<img src="https://badgen.net/badge/NPM/1.1.2/blue"/>&nbsp;
 <img src="https://badgen.net/badge/License/ISC/green"/>&nbsp;
 <img src="https://badgen.net/badge/Style%20Guide/Airbnb/grey"/>&nbsp;
 <img src="https://badgen.net/badge/Language/JS/orange"/>&nbsp;

@@ -2,10 +2,21 @@
 
 > A plugin to sync vue data to a storage system
 
-<img src="https://badgen.net/badge/npm/1.0.0/blue"/>&nbsp;
-<img src="https://badgen.net/badge/license/ISC/green"/>&nbsp;
+<img src="https://badgen.net/badge/NPM/1.0.1/blue"/>&nbsp;
+<img src="https://badgen.net/badge/License/ISC/green"/>&nbsp;
+<img src="https://badgen.net/badge/Style%20Guide/Airbnb/grey"/>&nbsp;
+<img src="https://badgen.net/badge/Language/JS/orange"/>&nbsp;
 
 ---
+
+## What is it for?
+
+VueStorageSync provides capability to Vue.js components to persist it's data to client storage
+(for now localStorage and sessionStorage).  
+It also provides possibility to use specific options component by component besides plugin
+registration options.  
+When called by a component the plugin will automatically store the specified properties to a
+selected storage system and mantain it updated. With this your component will behave as a keep-alive.
 
 ## Installing
 

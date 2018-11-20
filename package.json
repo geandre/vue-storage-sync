@@ -1,7 +1,7 @@
 {
-  "name": "vue-storage-sync",
+  "name": "vue-alive-keeper",
   "version": "1.1.2",
-  "description": "A plugin to sync vue data to a storage system",
+  "description": "A plugin keep data alive where ",
   "main": "index.js",
   "scripts": {
     "build": "bili --format cjs-min,umd-min",
